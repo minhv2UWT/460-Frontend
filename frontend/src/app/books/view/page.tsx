@@ -27,6 +27,14 @@ export default function BookView() {
           .then((data) => {console.log(data); setBooks(data)});
     }, []);
 
+    const onDelete = (book: IBook) => {
+        console.log("Deleteing book")
+    }
+
+    const viewBook = (book: IBook) => {
+        console.log("Viewing book")
+    }
+
     return (
         <>
            <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", alignItems: "center", height: "90vh", overflow: "hidden" }}>
@@ -51,14 +59,12 @@ export default function BookView() {
                         pb: 0
                       }}
                     >
-                        <React.Fragment>
-                            {paginatedBooks.map((book, index) => (
-                                <React.Fragment key={book.isbn13}>
-                                    <BookListItem book={book} />
-                                    {index < paginatedBooks.length - 1 && (<Divider component="li"/>)}
-                                </React.Fragment>
-                            ))}
+                    {paginatedBooks.map((book, index) => (
+                        <React.Fragment key={book.isbn13}>
+                            <BookListItem book={book} onDelete={onDelete} viewBook={viewBook} />
+                            {index < paginatedBooks.length - 1 && (<Divider component="li"/>)}
                         </React.Fragment>
+                    ))}
                         
                     </List>
                </Box>

@@ -3,7 +3,14 @@ import { Divider, IconButton, ImageListItem, ListItem, ListItemText } from "@mui
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-export default function BookListItem({ book }: { book: IBook }, onDelete: (isbn13: string) => void) {
+export default function BookListItem(
+    { book, onDelete, viewBook 
+
+    }: { 
+        book: IBook, 
+        onDelete: (book: IBook) => void, 
+        viewBook: (book: IBook) => void 
+    }) {
     return (
         <>
         <ListItem
@@ -11,12 +18,12 @@ export default function BookListItem({ book }: { book: IBook }, onDelete: (isbn1
             <IconButton
               edge="end"
               aria-label="delete"
-              onClick={() => onDelete(book.isbn13)}
+              onClick={() => onDelete(book)}
             >
               <DeleteIcon/>
             </IconButton> 
             }  
-            onClick={() => onDelete(book.isbn13)} 
+            onClick={() => viewBook(book)} 
         >
             <ImageListItem key={book.isbn13}>
             <img srcSet={book.image_url + ' 2x'}
