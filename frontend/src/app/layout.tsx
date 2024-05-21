@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import { Margin } from '@mui/icons-material';
 const pages = ['Books', 'Add a Book', 'Blog'];
 
 function Home({children}: {children: React.ReactNode}) {
@@ -37,7 +38,7 @@ function Home({children}: {children: React.ReactNode}) {
 
   return (
     <html>
-      <body>
+      <body style={{margin: 0}}>
         <AppBar position="sticky">
           <Container maxWidth="xl">
             <Toolbar disableGutters>

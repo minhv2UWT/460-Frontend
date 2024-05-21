@@ -1,7 +1,7 @@
 
 
 export async function GET() {
-    const res = await fetch("http://localhost:4000/books/all", {
+    const res = await fetch("http://localhost:4000/books", {
         next: {tags : ["books"]},
 
         method: "GET",
