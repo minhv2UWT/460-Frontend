@@ -13,17 +13,9 @@ export default function BookListItem(
     }) {
     return (
         <>
-        <ListItem
-            secondaryAction={
-            <IconButton
-              edge="end"
-              aria-label="delete"
-              onClick={() => onDelete(book)}
-            >
-              <DeleteIcon/>
-            </IconButton> 
-            }  
+        <ListItem 
             onClick={() => viewBook(book)} 
+            sx={{border: '1px solid #ddd', cursor: 'pointer', mt: 1}}
         >
             <ImageListItem key={book.isbn13}>
             <img srcSet={book.image_url + ' 2x'}
