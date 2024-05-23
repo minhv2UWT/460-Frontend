@@ -66,7 +66,7 @@ function Home({children}: {children: React.ReactNode}) {
                     href='/books/view'
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
-                    Books
+                    Search Books
                   </Button>
                   <Button
                     key="Books"
