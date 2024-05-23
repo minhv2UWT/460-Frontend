@@ -65,6 +65,12 @@ export default function BookView() {
         )
     }
 
+    const setFields = (data : IBook[]) => {
+        setBooks(data);
+        setTotalPages(Math.ceil(data.length / pageSize));
+        setPage(1);
+    }
+
     const search = () => {
         switch(searchCriteria) {
             case "Title":
@@ -73,9 +79,7 @@ export default function BookView() {
                         if (data.message) {
                             setBooks([]);
                         } else {
-                            console.log(data)
-                            setBooks(data);
-                            setTotalPages(Math.ceil(data.length / pageSize));
+                            setFields(data);
                         }
                     });
                 break;
@@ -85,8 +89,7 @@ export default function BookView() {
                         if (data.message) {
                             setBooks([]);
                         } else {
-                            setBooks(data);
-                            setTotalPages(Math.ceil(data.length / pageSize));
+                            setFields(data);
                         }
                     });
                 break;
@@ -96,8 +99,7 @@ export default function BookView() {
                         if (data.message) {
                             setBooks([]);
                         } else {
-                            setBooks(data);
-                            setTotalPages(Math.ceil(data.length / pageSize));
+                            setFields(data);
                         }
                     });
                 break;
@@ -107,8 +109,7 @@ export default function BookView() {
                         if (data.message) {
                             setBooks([]);
                         } else {
-                            setBooks(data);
-                            setTotalPages(Math.ceil(data.length / pageSize));
+                            setFields(data);
                         }
                     });
                 break;
