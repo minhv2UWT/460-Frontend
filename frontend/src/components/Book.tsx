@@ -1,5 +1,5 @@
 import { IBook } from "@/app/Models/Book";
-import { Divider, IconButton, ImageListItem, ListItem, ListItemText } from "@mui/material";
+import { Divider, IconButton, ImageListItem, ListItem, ListItemText, Rating, Typography, useTheme } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
@@ -9,8 +9,9 @@ export default function BookListItem(
     }: { 
         book: IBook, 
         onDelete: (book: IBook) => void, 
-        viewBook: (book: IBook) => void 
+        viewBook: (isbn13: string) => void 
     }) {
+    const theme = useTheme();
     return (
         <>
         <ListItem 
@@ -29,6 +30,16 @@ export default function BookListItem(
                 secondaryTypographyProps={{ color: 'text.secondary' }}
             >
             </ListItemText>
+            <Typography color="text.secondary" > Average Rating </Typography>
+            <Typography color="text.secondary" sx={{padding: 2}} fontSize={24} fontWeight={100}> | </Typography>
+            <Rating value={book.rating_avg} readOnly precision={0.25} 
+                sx={{
+                    "& .MuiRating-iconFilled": {
+                    color: "#1976d2"
+                    }
+                }}
+            >
+            </Rating>
         </ListItem>
         </>
     )
