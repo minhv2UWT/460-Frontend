@@ -14,7 +14,7 @@ export default function BookListItem(
     return (
         <>
         <ListItem 
-            onClick={() => viewBook(book)} 
+            onClick={() => viewBook(book.isbn13)} 
             sx={{border: '1px solid #ddd', cursor: 'pointer', mt: 1}}
         >
             <ImageListItem key={book.isbn13}>
