@@ -77,10 +77,11 @@ function Home({children}: {children: React.ReactNode}) {
                   </Button>
                   <Button
                     key="Books"
-                    href='/books/other'
+                    href='/books/delete'
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
-                    Another Option Here
+                    DELETE A BOOK
+
                   </Button>
               </Box>
             </Toolbar>

@@ -1,23 +1,31 @@
 import { IBook } from "@/app/Models/Book";
-import { Divider, IconButton, ImageListItem, ListItem, ListItemText, Rating, Typography, useTheme } from "@mui/material";
+import { Divider, IconButton, ImageListItem, ListItem, ListItemButton, ListItemText, Rating, Typography, useTheme,Checkbox } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function BookListItem(
-    { book, onDelete, viewBook 
+    { book, onDelete, viewBook , selected, toggleSelect 
 
     }: { 
         book: IBook, 
-        onDelete: (book: IBook) => void, 
-        viewBook: (isbn13: string) => void 
+        onDelete: (isbn13: string[]) => void, 
+        viewBook: (isbn13: string) => void,
+        selected: boolean,
+        toggleSelect: (isbn13: string) => void
+
     }) {
     const theme = useTheme();
     return (
-        <>
         <ListItem 
-            onClick={() => viewBook(book.isbn13)} 
             sx={{border: '1px solid #ddd', cursor: 'pointer', mt: 1}}
+            
         >
+            <Checkbox
+                checked={selected}
+                onChange={() => toggleSelect(book.isbn13)}
+                inputProps={{ 'aria-label': 'select book' }}
+            />
+                
             <ImageListItem key={book.isbn13}>
             <img srcSet={book.image_url + ' 2x'}
                 src={book.image_url_small}
@@ -28,6 +36,7 @@ export default function BookListItem(
                 primary={book.title}
                 secondary={book.authors + ' | ' + book.publication_year + ' | ' + book.rating_avg} 
                 secondaryTypographyProps={{ color: 'text.secondary' }}
+                onClick={() => viewBook(book.isbn13)}
             >
             </ListItemText>
             <Typography color="text.secondary" > Average Rating </Typography>
@@ -39,8 +48,10 @@ export default function BookListItem(
                     }
                 }}
             >
-            </Rating>     
-        </ListItem>
-        </>
+            </Rating>                     
+        </ListItem> 
+      
+        
+       
     )
 }
