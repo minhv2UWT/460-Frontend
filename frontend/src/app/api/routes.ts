@@ -15,7 +15,7 @@ export async function getAllBooks() {
 }
 
 export async function DeleteISBNs(Isbn: string[]){
-
+    const isbnObject = {isbns: Isbn}
     const res = await fetch("http://localhost:4000/books/isbn", {
         next: {tags : ["books"]},
 
@@ -23,7 +23,7 @@ export async function DeleteISBNs(Isbn: string[]){
         headers: {
             "Content-Type": "application/json",
         },
-    
+        body: JSON.stringify(isbnObject)
     })
     const data = await res.json()
     return Response.json(data)
