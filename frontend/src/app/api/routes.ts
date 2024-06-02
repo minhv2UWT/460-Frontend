@@ -86,3 +86,16 @@ export async function searchBookByISBN(isbn:string) {
     return data;
 }
 
+export async function addBook(theBook: object) {
+    console.log(theBook)
+    const res = await fetch("http://localhost:4000/books/add_new_book", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(theBook)
+    
+    })
+    const data = await res.json()
+    return Response.json(data)
+}
